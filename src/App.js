@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { Provider } from "react-redux";
+import { Switch, Route } from "react-router-dom";
 import store from "./Store";
 import Adder from "./Components/Adder";
 import AdderSecond from "./Components/Adder2";
@@ -25,8 +26,10 @@ class App extends Component {
               Learn React
             </a>
           </header>
-          <Adder />
-          <AdderSecond />
+          <Switch>
+            <Route exact path="/" component={Adder} />
+            <Route exact path="/about" component={AdderSecond} />
+          </Switch>
         </div>
       </Provider>
     );
