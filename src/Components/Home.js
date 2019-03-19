@@ -29,7 +29,25 @@ export default function Home() {
       </div>
       <div className="ourMainServices">
         <div className="ant-row">
-          <div className="ant-col-md-6">
+          <div className="ant-col-md-6 ant-col-xs-24 card-services">
+            <Icon type="dashboard" style={{ fontSize: "2rem" }} />
+            <h3>Acid Reason</h3>
+            <hr />
+            <p>Would you like to know how fuck your organization is?</p>
+          </div>
+          <div className="ant-col-md-6 ant-col-xs-24 card-services">
+            <Icon type="dashboard" style={{ fontSize: "2rem" }} />
+            <h3>Acid Reason</h3>
+            <hr />
+            <p>Would you like to know how fuck your organization is?</p>
+          </div>
+          <div className="ant-col-md-6 ant-col-xs-24 card-services">
+            <Icon type="dashboard" style={{ fontSize: "2rem" }} />
+            <h3>Acid Reason</h3>
+            <hr />
+            <p>Would you like to know how fuck your organization is?</p>
+          </div>
+          <div className="ant-col-md-6 ant-col-xs-24 card-services">
             <Icon type="dashboard" style={{ fontSize: "2rem" }} />
             <h3>Acid Reason</h3>
             <hr />

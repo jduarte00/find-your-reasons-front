@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
+import Home from "./Components/Home";
 import { Provider } from "react-redux";
+import { Switch, Route } from "react-router-dom";
 import store from "./Store";
 import MyLayout from "./Components/MyLayout";
 /* import Adder from "./Components/Adder";
@@ -11,7 +13,10 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="App">
-          <MyLayout />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/home" component={MyLayout} />
+          </Switch>
         </div>
       </Provider>
     );

@@ -37,7 +37,7 @@ export default class MyLayout extends Component {
           )}
           <Content>
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/home" component={Home} />
             </Switch>
           </Content>
           <Footer style={{ textAlign: "center" }}>
