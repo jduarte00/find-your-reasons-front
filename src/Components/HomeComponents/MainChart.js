@@ -1,28 +1,69 @@
 import React from "react";
+import { Bar } from "react-chartjs-2";
+
+const data = {
+  labels: ["Acid Reason", "ROI", "Sales vs Expenses", "Total Revenue"],
+  datasets: [
+    {
+      label: "2017",
+      data: [617594, 181045, 153060, 106519],
+      backgroundColor: "rgba(255, 99, 132, 0.6)"
+    },
+    {
+      label: "2018",
+      data: [417594, 281045, 753060, 306519],
+      backgroundColor: "rgba(0, 99, 132, 0.6)"
+    },
+    {
+      label: "2019",
+      data: [217594, 681045, 353060, 906519],
+      backgroundColor: "rgba(100, 99, 132, 0.6)"
+    }
+  ]
+};
 
 export default function MainChart() {
   return (
-    <div className="container main-chart">
-      <div className="columns is-centered">
-        <div className="column is-half">
-          <h1 className="is-size-3 is-size-4-mobile service-section-description">
-            Great Visualizations
-          </h1>
-        </div>
-      </div>
-      <div className="columns level">
-        <div className="column">
-          <img
-            src="https://docs.moodle.org/dev/images_dev/c/c5/bar_chart.png"
-            alt="a chart"
-          />
-        </div>
-        <div className="column">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. A ducimus
-            ad molestias obcaecati odio commodi cupiditate quaerat rerum, quae,
-            ex sequi perspiciatis soluta delectus eaque totam voluptas.
-          </p>
+    <div className="has-background-light">
+      <div className="container main-chart" id="main-chart">
+        <div className="columns level">
+          <div className="column">
+            <Bar
+              data={data}
+              options={{
+                mantainAspectRatio: true,
+                scales: {
+                  yAxes: [
+                    {
+                      ticks: {
+                        callback: function(value, index, values) {
+                          if (parseInt(value) >= 1000) {
+                            return (
+                              "$" +
+                              value
+                                .toString()
+                                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                            );
+                          } else {
+                            return "$" + value;
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }}
+            />
+          </div>
+          <div className="column">
+            <h1 className="is-size-2 is-size-4-tablet service-section-description">
+              Great Visualizations
+            </h1>
+            <p className="is-size-5 service-section-description">
+              Explore and analyze your information with interactive charts that
+              are capable of showing different data sets and a variety of charts
+            </p>
+          </div>
         </div>
       </div>
     </div>

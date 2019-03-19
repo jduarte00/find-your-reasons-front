@@ -5,9 +5,9 @@ export default function Services() {
     <div className="container services-section">
       <div className="columns is-centered">
         <div className="column is-half">
-          <h1 className="is-size-3 is-size-4-mobile service-section-description">
-            We offer a wide number of finantial ratios and indicators to help
-            you to know your business
+          <h1 className="is-size-2 is-size-4-mobile service-section-description">
+            Wide number of finantial ratios and indicators to help you to know
+            your business
           </h1>
         </div>
       </div>

@@ -35,10 +35,12 @@ export default class Hero extends Component {
             <div className="container">
               <div className="navbar-brand">
                 <a className="navbar-item">
-                  <img
-                    src="https://bulma.io/images/bulma-type-white.png"
-                    alt="Logo"
-                  />
+                  <span className="is-size-2">
+                    KYR{" "}
+                    <span className="icon is-large theicon">
+                      <i class="fas fa-chart-line " />
+                    </span>
+                  </span>
                 </a>
                 <span
                   className="navbar-burger burger"
@@ -82,23 +84,15 @@ export default class Hero extends Component {
           <nav className="tabs">
             <div className="container">
               <ul>
-                <li className="is-active">
-                  <a>Overview</a>
+                <li>
+                  <a>Services</a>
+                </li>
+
+                <li>
+                  <a href="#main-chart">Visualization</a>
                 </li>
                 <li>
-                  <a>Modifiers</a>
-                </li>
-                <li>
-                  <a>Grid</a>
-                </li>
-                <li>
-                  <a>Elements</a>
-                </li>
-                <li>
-                  <a>Components</a>
-                </li>
-                <li>
-                  <a>Layout</a>
+                  <a href="#kpi-section">Benchmarking</a>
                 </li>
               </ul>
             </div>
