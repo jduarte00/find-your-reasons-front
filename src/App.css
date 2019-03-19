@@ -1,3 +1,5 @@
+@import "~antd/dist/antd.css";
+
 .App {
   text-align: center;
 }
@@ -31,3 +33,56 @@
     transform: rotate(360deg);
   }
 }
+
+/* Home */
+
+.heroReasons {
+  display: flex;
+  justify-content: center;
+  margin: 7rem 3rem;
+}
+
+.mainLogo {
+  max-height: 250px;
+}
+
+.mainDescription {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3rem;
+}
+
+.appMainName {
+  font-size: 68px;
+  margin-bottom: 0;
+}
+
+.appMainDescription {
+  max-width: 533px;
+  margin-bottom: 15px;
+}
+
+.appMainDescription p {
+  font-size: 20px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.mainButtonSection {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.ourMainServices {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Utilities */
