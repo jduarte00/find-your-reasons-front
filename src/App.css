@@ -36,9 +36,59 @@
 
 /* Home */
 .services-section {
-  padding: 100px 0;
+  padding: 6rem 0;
 }
 
 .service-section-description {
   margin: 0 30px 50px 30px;
+}
+
+.main-chart {
+  padding: 5rem 0;
+}
+
+.kpi-section {
+  padding-top: 5rem;
+  padding-bottom: 7rem;
+}
+
+.footer-section {
+  padding-top: 5rem;
+}
+
+.low-bar {
+  margin: 5rem 0;
+  padding: 1rem 0;
+}
+
+.footer-container {
+  margin-bottom: 8rem;
+}
+
+.theicon {
+  display: inline-block;
+}
+
+.logo-footer {
+  margin-bottom: 5rem;
+}
+
+#components-form-demo-normal-login .login-form {
+  max-width: 300px;
+}
+#components-form-demo-normal-login .login-form-forgot {
+  float: right;
+}
+#components-form-demo-normal-login .login-form-button {
+  width: 100%;
+}
+
+@media (max-width: 576px) {
+  .main-chart {
+    padding: 3rem 0.5rem;
+  }
+
+  .kpi-section {
+    padding: 3rem 0.5rem;
+  }
 }
