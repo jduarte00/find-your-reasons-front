@@ -56,7 +56,7 @@ export default function MainChart() {
             />
           </div>
           <div className="column">
-            <h1 className="is-size-2 is-size-4-tablet service-section-description">
+            <h1 className="is-size-2 is-size-4-mobile service-section-description">
               Great Visualizations
             </h1>
             <p className="is-size-5 service-section-description">
