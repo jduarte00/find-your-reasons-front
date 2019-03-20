@@ -1,10 +1,23 @@
 import React, { Component } from "react";
-import { Form, Icon, Input, Button, Checkbox } from "antd";
+import { Form, Icon, Input, Button } from "antd";
+import { Redirect } from "react-router-dom";
+import AuthService from "./auth-service";
 
 class Login extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      username: "",
+      password: "",
+      redirect: false
+    };
+    this.service = new AuthService();
   }
+
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
 
   makeHamburger = () => {
     document.addEventListener("DOMContentLoaded", () => {
@@ -39,12 +52,22 @@ class Login extends Component {
         console.log("Received values of form: ", values);
       }
     });
+    const username = this.state.username;
+    const password = this.state.password;
+    this.service
+      .login(username, password)
+      .then(response => {
+        this.setState({ username: "", password: "", redirect: true });
+        this.props.getUser(response);
+      })
+      .catch(error => console.log(error));
   };
 
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
       <div>
+        {this.state.redirect ? <Redirect to="/home" /> : null}
         <nav className="navbar is-info">
           <div className="container">
             <div className="navbar-brand">
@@ -52,7 +75,7 @@ class Login extends Component {
                 <span className="is-size-2">
                   KYR{" "}
                   <span className="icon is-large theicon">
-                    <i class="fas fa-chart-line " />
+                    <i className="fas fa-chart-line " />
                   </span>
                 </span>
               </a>
@@ -67,9 +90,13 @@ class Login extends Component {
             </div>
             <div id="navbarMenuHeroA" className="navbar-menu">
               <div className="navbar-end">
-                <a className="navbar-item is-active">Home</a>
-                <a className="navbar-item">Sign In</a>
-                <a className="navbar-item">Sign Up</a>
+                <a className="navbar-item" href="/">
+                  Home
+                </a>
+                <a className="navbar-item is-active">Sign In</a>
+                <a className="navbar-item" href="/signup">
+                  Sign Up
+                </a>
                 <span className="navbar-item">
                   <a className="button is-primary is-inverted">
                     <span className="icon">
@@ -83,54 +110,72 @@ class Login extends Component {
           </div>
         </nav>
 
-        <Form onSubmit={this.handleSubmit} className="login-form">
-          <Form.Item>
-            {getFieldDecorator("userName", {
-              rules: [
-                { required: true, message: "Please input your username!" }
-              ]
-            })(
-              <Input
-                prefix={
-                  <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
-                }
-                placeholder="Username"
-              />
-            )}
-          </Form.Item>
-          <Form.Item>
-            {getFieldDecorator("password", {
-              rules: [
-                { required: true, message: "Please input your Password!" }
-              ]
-            })(
-              <Input
-                prefix={
-                  <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />
-                }
-                type="password"
-                placeholder="Password"
-              />
-            )}
-          </Form.Item>
-          <Form.Item>
-            {getFieldDecorator("remember", {
-              valuePropName: "checked",
-              initialValue: true
-            })(<Checkbox>Remember me</Checkbox>)}
-            <a className="login-form-forgot" href="">
-              Forgot password
-            </a>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="login-form-button"
-            >
-              Log in
-            </Button>
-            Or <a href="">register now!</a>
-          </Form.Item>
-        </Form>
+        <div className="container form-container">
+          <div className="columns is-centered">
+            <div className="column is-half">
+              <h1 className="is-size-3">Hey, Welcome Back! Sign in!</h1>
+              <div className="icon-form">
+                <span className="icon is-large">
+                  <i class="fas fa-id-card fa-3x" />
+                </span>
+              </div>
+              <Form onSubmit={this.handleSubmit} className="login-form">
+                <Form.Item>
+                  {getFieldDecorator("userName", {
+                    rules: [
+                      { required: true, message: "Please input your username!" }
+                    ]
+                  })(
+                    <Input
+                      prefix={
+                        <Icon
+                          type="user"
+                          style={{ color: "rgba(0,0,0,.25)" }}
+                        />
+                      }
+                      placeholder="Username"
+                      name="username"
+                      onChange={this.handleChange}
+                    />
+                  )}
+                </Form.Item>
+                <Form.Item>
+                  {getFieldDecorator("password", {
+                    rules: [
+                      { required: true, message: "Please input your Password!" }
+                    ]
+                  })(
+                    <Input
+                      prefix={
+                        <Icon
+                          type="lock"
+                          style={{ color: "rgba(0,0,0,.25)" }}
+                        />
+                      }
+                      type="password"
+                      placeholder="Password"
+                      name="password"
+                      onChange={this.handleChange}
+                    />
+                  )}
+                </Form.Item>
+
+                <Form.Item>
+                  <div>
+                    <Button
+                      type="primary"
+                      htmlType="submit"
+                      className="login-form-button"
+                    >
+                      Log in
+                    </Button>
+                    Or <a href="/signup">register now!</a>
+                  </div>
+                </Form.Item>
+              </Form>
+            </div>
+          </div>
+        </div>
 
         {this.makeHamburger()}
       </div>
