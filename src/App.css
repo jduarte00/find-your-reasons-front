@@ -73,14 +73,17 @@
   margin-bottom: 5rem;
 }
 
-#components-form-demo-normal-login .login-form {
-  max-width: 300px;
-}
-#components-form-demo-normal-login .login-form-forgot {
-  float: right;
-}
-#components-form-demo-normal-login .login-form-button {
+.login-form-button {
   width: 100%;
+}
+
+.form-container {
+  margin: 5rem auto;
+  padding: 0 1rem;
+}
+
+.icon-form {
+  margin-bottom: 2rem;
 }
 
 @media (max-width: 576px) {
