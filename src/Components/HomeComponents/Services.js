@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Services() {
   return (
-    <div className="container services-section">
+    <div className="container services-section" id="services-section">
       <div className="columns is-centered">
         <div className="column is-half">
           <h1 className="is-size-2 is-size-4-mobile service-section-description">
@@ -13,7 +13,7 @@ export default function Services() {
       </div>
       <div className="columns">
         <div className="column">
-          <i class="fas fa-sort-numeric-down fa-4x" />
+          <i className="fas fa-sort-numeric-down fa-4x" />
           <hr />
           <h3>Acid Reasons</h3>
           <hr />
@@ -24,7 +24,7 @@ export default function Services() {
           </p>
         </div>
         <div className="column">
-          <i class="fas fa-sort-numeric-down fa-4x" />
+          <i className="fas fa-sort-numeric-down fa-4x" />
           <hr />
           <h3>Acid Reasons</h3>
           <hr />
@@ -35,7 +35,7 @@ export default function Services() {
           </p>
         </div>
         <div className="column">
-          <i class="fas fa-sort-numeric-down fa-4x" />
+          <i className="fas fa-sort-numeric-down fa-4x" />
           <hr />
           <h3>Acid Reasons</h3>
           <hr />
@@ -48,7 +48,7 @@ export default function Services() {
       </div>
       <div className="columns">
         <div className="column">
-          <i class="fas fa-sort-numeric-down fa-4x" />
+          <i className="fas fa-sort-numeric-down fa-4x" />
           <hr />
           <h3>Acid Reasons</h3>
           <hr />
@@ -59,7 +59,7 @@ export default function Services() {
           </p>
         </div>
         <div className="column">
-          <i class="fas fa-sort-numeric-down fa-4x" />
+          <i className="fas fa-sort-numeric-down fa-4x" />
           <hr />
           <h3>Acid Reasons</h3>
           <hr />
@@ -70,7 +70,7 @@ export default function Services() {
           </p>
         </div>
         <div className="column">
-          <i class="fas fa-sort-numeric-down fa-4x" />
+          <i className="fas fa-sort-numeric-down fa-4x" />
           <hr />
           <h3>Acid Reasons</h3>
           <hr />

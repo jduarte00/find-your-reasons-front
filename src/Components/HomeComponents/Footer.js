@@ -23,18 +23,18 @@ export default function Footer() {
           <span className="is-size-2">
             KYR{" "}
             <span className="icon is-large theicon">
-              <i class="fas fa-chart-line " />
+              <i className="fas fa-chart-line " />
             </span>
           </span>
         </div>
 
         <a
-          href="/home"
+          href="/signup"
           className="button is-rounded is-warning is-medium is-size-3"
         >
           <span>Sign up now!</span>{" "}
           <span className="icon is-small theicon">
-            <i class="fas fa-user-plus" />
+            <i className="fas fa-user-plus" />
           </span>
         </a>
       </div>
@@ -47,7 +47,7 @@ export default function Footer() {
             <a href="https://reactjs.org/">React</a>{" "}
           </span>
           <span className="icon is-small">
-            <i class="fas fa-laptop" />
+            <i className="fas fa-laptop" />
           </span>
         </div>
       </div>

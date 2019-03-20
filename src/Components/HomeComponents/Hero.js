@@ -29,7 +29,7 @@ export default class Hero extends Component {
 
   render() {
     return (
-      <div className="hero is-primary is-medium">
+      <div className="hero is-info is-medium">
         <div className="hero-head">
           <nav className="navbar">
             <div className="container">
@@ -38,7 +38,7 @@ export default class Hero extends Component {
                   <span className="is-size-2">
                     KYR{" "}
                     <span className="icon is-large theicon">
-                      <i class="fas fa-chart-line " />
+                      <i className="fas fa-chart-line " />
                     </span>
                   </span>
                 </a>
@@ -54,8 +54,12 @@ export default class Hero extends Component {
               <div id="navbarMenuHeroA" className="navbar-menu">
                 <div className="navbar-end">
                   <a className="navbar-item is-active">Home</a>
-                  <a className="navbar-item">Sign In</a>
-                  <a className="navbar-item">Sign Up</a>
+                  <a className="navbar-item" href="/signin">
+                    Sign In
+                  </a>
+                  <a className="navbar-item" href="/signup">
+                    Sign Up
+                  </a>
                   <span className="navbar-item">
                     <a className="button is-primary is-inverted">
                       <span className="icon">
@@ -85,7 +89,7 @@ export default class Hero extends Component {
             <div className="container">
               <ul>
                 <li>
-                  <a>Services</a>
+                  <a href="#services-section">Services</a>
                 </li>
 
                 <li>
