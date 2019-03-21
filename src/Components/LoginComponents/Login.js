@@ -47,11 +47,7 @@ class Login extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.form.validateFields((err, values) => {
-      if (!err) {
-        console.log("Received values of form: ", values);
-      }
-    });
+    this.props.form.validateFields((err, values) => {});
     const username = this.state.username;
     const password = this.state.password;
     this.service
