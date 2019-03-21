@@ -30,7 +30,7 @@ export default function Footer() {
 
         <a
           href="/signup"
-          className="button is-rounded is-warning is-medium is-size-3"
+          className="button is-rounded is-light is-medium is-size-4"
         >
           <span>Sign up now!</span>{" "}
           <span className="icon is-small theicon">

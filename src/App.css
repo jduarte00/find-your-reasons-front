@@ -86,6 +86,10 @@
   margin-bottom: 2rem;
 }
 
+#center-buttons-table {
+  justify-content: flex-end;
+}
+
 @media (max-width: 576px) {
   .main-chart {
     padding: 3rem 0.5rem;
