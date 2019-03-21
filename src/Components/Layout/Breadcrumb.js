@@ -3,7 +3,7 @@ import { Breadcrumb } from "antd";
 
 export default function MyBreadcrumb(props) {
   let allBreads = props.routes.map((item, current) => {
-    return <Breadcrumb.Item>{item}</Breadcrumb.Item>;
+    return <Breadcrumb.Item key={current}>{item}</Breadcrumb.Item>;
   });
 
   return (
