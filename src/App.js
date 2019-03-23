@@ -6,6 +6,9 @@ import WrappedNormalSignupForm from "./Components/LoginComponents/Signup";
 import { Switch, Route } from "react-router-dom";
 import MyLayout from "./Components/Layout/MyLayout";
 import AuthService from "./Components/LoginComponents/auth-service";
+import MainPage from "./Components/Layout/Panel/MainPage";
+import UserProfile from "./Components/Layout/Profile/UserProfile";
+import MainForm from "./Components/Layout/NewApp/MainForm";
 
 class App extends Component {
   constructor(props) {
@@ -46,7 +49,32 @@ class App extends Component {
             <Route
               exact
               path="/home"
-              render={() => <MyLayout theUser={this.state.loggedInUser} />}
+              render={() => (
+                <MyLayout
+                  theUser={this.state.loggedInUser}
+                  theContent={<MainPage theUser={this.state.loggedInUser} />}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/profile"
+              render={() => (
+                <MyLayout
+                  theUser={this.state.loggedInUser}
+                  theContent={<UserProfile theUser={this.state.loggedInUser} />}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/newapp"
+              render={() => (
+                <MyLayout
+                  theUser={this.state.loggedInUser}
+                  theContent={<MainForm theUser={this.state.loggedInUser} />}
+                />
+              )}
             />
           </Switch>
         </div>
