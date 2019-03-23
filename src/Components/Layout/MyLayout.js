@@ -5,7 +5,8 @@ import { Switch, Route } from "react-router-dom";
 
 import "./../../App.css";
 
-import MainPage from "./MainPage";
+import MainPage from "./Panel/MainPage";
+import UserProfile from "./Profile/UserProfile";
 import Topbar from "./Topbar";
 import Sidebar from "./Sidebar";
 
@@ -58,16 +59,14 @@ export default class MyLayout extends Component {
         <Layout>
           <Topbar getUser={this.props.getUser} theUser={this.state.user} />
 
-          <Content>
-            <Switch>
-              <Route
-                exact
-                path="/home"
-                render={() => <MainPage theUser={this.state.user} />}
-              />
-            </Switch>
-          </Content>
-          <Footer style={{ textAlign: "center" }}>
+          <Content>{this.props.theContent}</Content>
+          <Footer
+            style={{
+              textAlign: "center",
+              background: "darkgray"
+            }}
+            className="margin-top"
+          >
             Creado por José Duarte utilizando{" "}
             <a href="https://reactjs.org/">React</a> y{" "}
             <a href="https://ant.design">AntDesign</a> 🖤
