@@ -113,7 +113,7 @@ class Signup extends Component {
 
         <div className="container form-container">
           <div className="columns is-centered">
-            <div className="column is-half">
+            <div className="column is-one-third">
               <h1 className="is-size-3">
                 We're glad you decided to join! Sign up!
               </h1>

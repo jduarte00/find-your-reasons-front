@@ -108,7 +108,7 @@ class Login extends Component {
 
         <div className="container form-container">
           <div className="columns is-centered">
-            <div className="column is-half">
+            <div className="column is-one-third">
               <h1 className="is-size-3">Hey, Welcome Back! Sign in!</h1>
               <div className="icon-form">
                 <span className="icon is-large">
