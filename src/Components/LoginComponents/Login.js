@@ -67,7 +67,7 @@ class Login extends Component {
         <nav className="navbar is-info">
           <div className="container">
             <div className="navbar-brand">
-              <a className="navbar-item">
+              <a className="navbar-item" href="/">
                 <span className="is-size-2">
                   KYR{" "}
                   <span className="icon is-large theicon">
@@ -89,12 +89,17 @@ class Login extends Component {
                 <a className="navbar-item" href="/">
                   Home
                 </a>
-                <a className="navbar-item is-active">Sign In</a>
+                <a className="navbar-item is-active" href="/signin">
+                  Sign In
+                </a>
                 <a className="navbar-item" href="/signup">
                   Sign Up
                 </a>
                 <span className="navbar-item">
-                  <a className="button is-primary is-inverted">
+                  <a
+                    className="button is-primary is-inverted"
+                    href="https://github.com/jduarte00"
+                  >
                     <span className="icon">
                       <i className="fab fa-github" />
                     </span>

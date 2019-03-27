@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 
 import { Layout } from "antd";
-import { Switch, Route } from "react-router-dom";
 
 import "./../../App.css";
 
 import MainPage from "./Panel/MainPage";
+import MainForm from "./NewApp/MainForm";
 import UserProfile from "./Profile/UserProfile";
+import ViewApp from "./ViewApp/ViewApp";
 import Topbar from "./Topbar";
 import Sidebar from "./Sidebar";
 
@@ -54,16 +55,33 @@ export default class MyLayout extends Component {
             collapsedWidth="0"
             handleOnCollapse={this.onCollapse}
             collapsed={this.state.collapsed}
+            changeRoute={this.props.changeRoute}
           />
         )}
         <Layout>
           <Topbar getUser={this.props.getUser} theUser={this.state.user} />
 
-          <Content>{this.props.theContent}</Content>
+          <Content>
+            {this.props.theContent === "home" ? (
+              <MainPage
+                theUser={this.state.user}
+                changeRoute={this.props.changeRoute}
+              />
+            ) : null}
+            {this.props.theContent === "newapp" ? (
+              <MainForm theUser={this.state.user} />
+            ) : null}
+            {this.props.theContent === "profile" ? (
+              <UserProfile theUser={this.state.user} />
+            ) : null}
+            {this.props.theContent === "viewapp" ? (
+              <ViewApp theUser={this.state.user} appID={this.props.appID} />
+            ) : null}
+          </Content>
           <Footer
             style={{
               textAlign: "center",
-              background: "darkgray"
+              background: "coral"
             }}
             className="margin-top"
           >

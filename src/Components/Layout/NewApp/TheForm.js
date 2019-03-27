@@ -1,20 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import {
-  Form,
-  Input,
-  Tooltip,
-  Icon,
-  Select,
-  Button,
-  AutoComplete,
-  Radio
-} from "antd";
+import { Form, Input, Tooltip, Icon, Select, Button, Radio } from "antd";
 
 const { Option } = Select;
 
-class TheFormClass extends React.Component {
+let idDynamicForm = 0;
+
+class TheFormClass extends Component {
   state = {
     confirmDirty: false
   };
@@ -31,29 +24,60 @@ class TheFormClass extends React.Component {
             { withCredentials: true }
           )
           .then(response => {
-            console.log("all fine mate!");
+            console.log(response);
             return response;
+          })
+          .catch(err => {
+            //IMPROVEMENT: SHOW AN UI MESSAGE WHEN SOMETHING GOES WRONG!
+            console.log(err);
           });
       }
     });
   };
 
-  handleConfirmBlur = e => {
-    const value = e.target.value;
-    this.setState({ confirmDirty: this.state.confirmDirty || !!value });
+  //Method to delete an item from the dynamic form
+
+  remove = k => {
+    const { form } = this.props;
+    // can use data-binding to get
+    const keys = form.getFieldValue("keys");
+    // We need at least one passenger
+    if (keys.length === 1) {
+      return;
+    }
+
+    // can use data-binding to set
+    //I think i might be able to delete this part because i'm not using data binding
+    form.setFieldsValue({
+      keys: keys.filter(key => key !== k)
+    });
+  };
+
+  //Method to add an item to the dynamic form
+
+  add = () => {
+    const { form } = this.props;
+    // can use data-binding to get
+    const keys = form.getFieldValue("keys");
+    const nextKeys = keys.concat(idDynamicForm++);
+    // can use data-binding to set
+    // important! notify form to detect changes
+    form.setFieldsValue({
+      keys: nextKeys
+    });
   };
 
   render() {
-    const { getFieldDecorator } = this.props.form;
+    const { getFieldDecorator, getFieldValue } = this.props.form;
 
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
-        sm: { span: 8 }
+        sm: { span: 4 }
       },
       wrapperCol: {
         xs: { span: 24 },
-        sm: { span: 16 }
+        sm: { span: 20 }
       }
     };
     const tailFormItemLayout = {
@@ -68,8 +92,60 @@ class TheFormClass extends React.Component {
         }
       }
     };
+    const formItemLayoutWithOutLabel = {
+      wrapperCol: {
+        xs: { span: 24, offset: 0 },
+        sm: { span: 20, offset: 4 }
+      }
+    };
 
-    console.log(this.props.form.getFieldsValue());
+    const formItemLayoutDynamic = {
+      labelCol: {
+        xs: { span: 24 },
+        sm: { span: 4 }
+      },
+      wrapperCol: {
+        xs: { span: 24 },
+        sm: { span: 20 }
+      }
+    };
+
+    //Code for generating dynamic input layout
+
+    getFieldDecorator("keys", { initialValue: [] });
+    const keys = getFieldValue("keys");
+    const formItems = keys.map((k, index) => (
+      <Form.Item
+        {...(index === 0 ? formItemLayoutDynamic : formItemLayoutWithOutLabel)}
+        label={index === 0 ? "User type" : ""}
+        required={false}
+        key={k}
+      >
+        {getFieldDecorator(`userTypes[${k}]`, {
+          validateTrigger: ["onChange", "onBlur"],
+          rules: [
+            {
+              required: true,
+              whitespace: true,
+              message: "Please input passenger's name or delete this field."
+            }
+          ]
+        })(
+          <Input
+            placeholder="user type name"
+            style={{ width: "60%", marginRight: 8 }}
+          />
+        )}
+        {keys.length > 1 ? (
+          <Icon
+            className="dynamic-delete-button"
+            type="minus-circle-o"
+            disabled={keys.length === 1}
+            onClick={() => this.remove(k)}
+          />
+        ) : null}
+      </Form.Item>
+    ));
 
     return (
       <Form {...formItemLayout} onSubmit={this.handleSubmit}>
@@ -161,6 +237,14 @@ class TheFormClass extends React.Component {
               <Option value="other">Other</Option>
             </Select>
           )}
+        </Form.Item>
+
+        {formItems}
+
+        <Form.Item {...formItemLayoutWithOutLabel}>
+          <Button type="dashed" onClick={this.add} style={{ width: "60%" }}>
+            <Icon type="plus" /> Add field
+          </Button>
         </Form.Item>
 
         <Form.Item {...tailFormItemLayout}>

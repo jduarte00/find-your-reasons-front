@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import MyBreadcrumb from "../Breadcrumb";
-import axios from "axios";
 
 export default class UserProfileForm extends Component {
   constructor(props) {
@@ -27,7 +26,7 @@ export default class UserProfileForm extends Component {
           <div className="columns is-centered">
             <div className="column is-half">
               <span className="icon is-large">
-                <i class="fas fa-user-edit fa-3x" />
+                <i className="fas fa-user-edit fa-3x" />
               </span>
             </div>
           </div>
@@ -35,7 +34,7 @@ export default class UserProfileForm extends Component {
             <div className="column is-half">
               <div className="field has-addons">
                 <div className="control">
-                  <a className="button is-info">Username</a>
+                  <span className="button is-info">Username</span>
                 </div>
                 <div className="control is-expanded">
                   <input
@@ -53,7 +52,7 @@ export default class UserProfileForm extends Component {
             <div className="column is-half">
               <div className="field has-addons">
                 <div className="control">
-                  <a className="button is-info">Old Password</a>
+                  <span className="button is-info">Old Password</span>
                 </div>
                 <div className="control is-expanded">
                   <input
@@ -71,7 +70,7 @@ export default class UserProfileForm extends Component {
             <div className="column is-half">
               <div className="field has-addons">
                 <div className="control">
-                  <a className="button is-info">New Password</a>
+                  <span className="button is-info">New Password</span>
                 </div>
                 <div className="control is-expanded">
                   <input
@@ -97,7 +96,10 @@ export default class UserProfileForm extends Component {
           ) : null}
           <div className="columns is-centered">
             <div className="column is-half">
-              <a className="button is-success is-fullwidth is-rounded">
+              <a
+                className="button is-success is-fullwidth is-rounded"
+                href="/not-finished"
+              >
                 Commit Changes!
               </a>
             </div>

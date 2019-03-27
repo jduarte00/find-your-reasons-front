@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Layout, Avatar, Dropdown, Menu } from "antd";
+import { Layout, Dropdown, Menu } from "antd";
 import AuthService from "../LoginComponents/auth-service";
 const { Header } = Layout;
 
@@ -62,12 +62,12 @@ export default class Topbar extends Component {
           </span>
         </span>
         <Dropdown overlay={this.userMenu}>
-          <a className="ant-dropdown-link" href="#">
+          <button className="ant-dropdown-link button is-danger is-small">
             {/* <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
             {console.log(this.state.user.username */}
 
             {this.state.loggedInUser.username}
-          </a>
+          </button>
         </Dropdown>
       </Header>
     );

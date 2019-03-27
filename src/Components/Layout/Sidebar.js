@@ -15,9 +15,32 @@ export default function Sidebar(props) {
     >
       <div className="logo" />
       <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-        <Menu.Item key="1">
+        <Menu.Item
+          key="1"
+          onClick={() => {
+            props.changeRoute("home");
+          }}
+        >
           <Icon type="home" />
           <span>Home</span>
+        </Menu.Item>
+        <Menu.Item
+          key="9"
+          onClick={() => {
+            props.changeRoute("newapp");
+          }}
+        >
+          <Icon type="code" />
+          <span>New App</span>
+        </Menu.Item>
+        <Menu.Item
+          key="10"
+          onClick={() => {
+            props.changeRoute("profile");
+          }}
+        >
+          <Icon type="user" />
+          <span>Profile</span>
         </Menu.Item>
         <Menu.Item disabled={true} key="2">
           <Icon type="desktop" />
@@ -48,10 +71,6 @@ export default function Sidebar(props) {
           <Menu.Item key="6">Team 1</Menu.Item>
           <Menu.Item key="8">Team 2</Menu.Item>
         </SubMenu>
-        <Menu.Item key="9">
-          <Icon type="file" />
-          <span>File</span>
-        </Menu.Item>
       </Menu>
     </Sider>
   );

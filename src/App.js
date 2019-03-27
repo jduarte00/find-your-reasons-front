@@ -6,15 +6,14 @@ import WrappedNormalSignupForm from "./Components/LoginComponents/Signup";
 import { Switch, Route } from "react-router-dom";
 import MyLayout from "./Components/Layout/MyLayout";
 import AuthService from "./Components/LoginComponents/auth-service";
-import MainPage from "./Components/Layout/Panel/MainPage";
-import UserProfile from "./Components/Layout/Profile/UserProfile";
-import MainForm from "./Components/Layout/NewApp/MainForm";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedInUser: null
+      loggedInUser: null,
+      currentPath: "home",
+      idApp: ""
     };
     this.service = new AuthService();
   }
@@ -35,8 +34,13 @@ class App extends Component {
         });
     }
   };
+
   getTheUser = userObj => {
     this.setState({ loggedInUser: userObj });
+  };
+
+  changeCurrentRoute = (route, appID) => {
+    this.setState({ currentPath: route, idApp: appID });
   };
 
   render() {
@@ -52,11 +56,14 @@ class App extends Component {
               render={() => (
                 <MyLayout
                   theUser={this.state.loggedInUser}
-                  theContent={<MainPage theUser={this.state.loggedInUser} />}
+                  theContent={this.state.currentPath}
+                  changeRoute={this.changeCurrentRoute}
+                  appID={this.state.idApp}
+                  /* theContent={<MainPage theUser={this.state.loggedInUser} />} */
                 />
               )}
             />
-            <Route
+            {/* <Route
               exact
               path="/profile"
               render={() => (
@@ -73,9 +80,8 @@ class App extends Component {
                 <MyLayout
                   theUser={this.state.loggedInUser}
                   theContent={<MainForm theUser={this.state.loggedInUser} />}
-                />
-              )}
-            />
+                /> */}
+            )} />
           </Switch>
         </div>
       );

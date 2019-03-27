@@ -72,7 +72,7 @@ class Signup extends Component {
         <nav className="navbar is-info">
           <div className="container">
             <div className="navbar-brand">
-              <a className="navbar-item">
+              <a className="navbar-item" href="/">
                 <span className="is-size-2">
                   KYR{" "}
                   <span className="icon is-large theicon">
@@ -97,9 +97,14 @@ class Signup extends Component {
                 <a className="navbar-item" href="/signin">
                   Sign In
                 </a>
-                <a className="navbar-item is-active">Sign Up</a>
+                <a className="navbar-item is-active" href="/signup">
+                  Sign Up
+                </a>
                 <span className="navbar-item">
-                  <a className="button is-primary is-inverted">
+                  <a
+                    className="button is-primary is-inverted"
+                    href="https://github.com/jduarte00"
+                  >
                     <span className="icon">
                       <i className="fab fa-github" />
                     </span>

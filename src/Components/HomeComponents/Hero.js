@@ -34,7 +34,7 @@ export default class Hero extends Component {
           <nav className="navbar">
             <div className="container">
               <div className="navbar-brand">
-                <a className="navbar-item">
+                <a className="navbar-item" href="/">
                   <span className="is-size-2">
                     KYR{" "}
                     <span className="icon is-large theicon">
@@ -53,7 +53,9 @@ export default class Hero extends Component {
               </div>
               <div id="navbarMenuHeroA" className="navbar-menu">
                 <div className="navbar-end">
-                  <a className="navbar-item is-active">Home</a>
+                  <a className="navbar-item is-active" href="/">
+                    Home
+                  </a>
                   <a className="navbar-item" href="/signin">
                     Sign In
                   </a>
@@ -61,7 +63,10 @@ export default class Hero extends Component {
                     Sign Up
                   </a>
                   <span className="navbar-item">
-                    <a className="button is-primary is-inverted">
+                    <a
+                      className="button is-primary is-inverted"
+                      href="https://github.com/jduarte00"
+                    >
                       <span className="icon">
                         <i className="fab fa-github" />
                       </span>

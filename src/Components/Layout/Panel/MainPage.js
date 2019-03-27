@@ -59,21 +59,22 @@ export default class MainPage extends Component {
               </a>
             </p>
             <p className="control" id="remove-margin-buttons">
-              <a
+              <span
                 className="button is-info is-small"
-                href={`http://localhost:3001/editcompany/${theId}`}
+                onClick={() => {
+                  this.props.changeRoute("viewapp", theId);
+                }}
               >
                 <span className="icon is-small">
                   <i className="fas fa-align-center" />
                 </span>
                 <span>Edit</span>
-              </a>
+              </span>
             </p>
             <p className="control" id="remove-margin-buttons">
-              <a
+              <span
                 className="button is-danger is-small"
                 onClick={(e, Id = theId) => {
-                  console.log(Id, "this is theID", e);
                   this.deleteApp(Id);
                 }}
               >
@@ -81,7 +82,7 @@ export default class MainPage extends Component {
                   <i className="fas fa-align-right" />
                 </span>
                 <span>Delete</span>
-              </a>
+              </span>
             </p>
           </div>
         )
@@ -114,7 +115,6 @@ export default class MainPage extends Component {
     axios
       .get("http://localhost:3001/user/panel", { withCredentials: true })
       .then(theData => {
-        console.log(theData, "theData");
         this.setState({ userApps: theData.data });
         return theData.data;
       });
@@ -140,7 +140,6 @@ export default class MainPage extends Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <div>
         <div className="container responsive-padding-sides">
@@ -158,20 +157,20 @@ export default class MainPage extends Component {
           </div>
           <div className="columns margin-top">
             <div className="column">
-              <p class="heading">Total Income</p>
-              <p class="title">3,456</p>
+              <p className="heading">Total Income</p>
+              <p className="title">3,456</p>
             </div>
             <div className="column">
-              <p class="heading">Total Expenses</p>
-              <p class="title">3,456</p>
+              <p className="heading">Total Expenses</p>
+              <p className="title">3,456</p>
             </div>
             <div className="column">
-              <p class="heading">Total Revenue</p>
-              <p class="title">3,456</p>
+              <p className="heading">Total Revenue</p>
+              <p className="title">3,456</p>
             </div>
             <div className="column">
-              <p class="heading">Number of Developed Apps</p>
-              <p class="title">3,456</p>
+              <p className="heading">Number of Developed Apps</p>
+              <p className="title">3,456</p>
             </div>
           </div>
           <div className="columns margin-top">
