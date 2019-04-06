@@ -6,6 +6,7 @@ import WrappedNormalSignupForm from "./Components/LoginComponents/Signup";
 import { Switch, Route } from "react-router-dom";
 import MyLayout from "./Components/Layout/MyLayout";
 import AuthService from "./Components/LoginComponents/auth-service";
+import WrongRoute from "./Components/HomeComponents/WrongRoute";
 
 class App extends Component {
   constructor(props) {
@@ -59,30 +60,12 @@ class App extends Component {
                   theContent={this.state.currentPath}
                   changeRoute={this.changeCurrentRoute}
                   appID={this.state.idApp}
-                  /* theContent={<MainPage theUser={this.state.loggedInUser} />} */
                 />
               )}
             />
-            {/* <Route
-              exact
-              path="/profile"
-              render={() => (
-                <MyLayout
-                  theUser={this.state.loggedInUser}
-                  theContent={<UserProfile theUser={this.state.loggedInUser} />}
-                />
-              )}
-            />
-            <Route
-              exact
-              path="/newapp"
-              render={() => (
-                <MyLayout
-                  theUser={this.state.loggedInUser}
-                  theContent={<MainForm theUser={this.state.loggedInUser} />}
-                /> */}
             )} />
           </Switch>
+          {/* <Route path="/" render={() => <WrongRoute />} /> */}
         </div>
       );
     } else {
@@ -104,6 +87,7 @@ class App extends Component {
                 <WrappedNormalSignupForm getUser={this.getTheUser} />
               )}
             />
+            <Route path="/" render={() => <WrongRoute />} />
           </Switch>
         </div>
       );
