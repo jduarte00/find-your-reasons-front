@@ -9,7 +9,8 @@ class Login extends Component {
     this.state = {
       username: "",
       password: "",
-      redirect: false
+      redirect: false,
+      errorLoginIn: false
     };
     this.service = new AuthService();
   }
@@ -56,7 +57,9 @@ class Login extends Component {
         this.setState({ username: "", password: "", redirect: true });
         this.props.getUser(response);
       })
-      .catch(error => console.log(error));
+      .catch(error => {
+        this.setState({ errorLoginIn: true });
+      });
   };
 
   render() {
@@ -117,7 +120,7 @@ class Login extends Component {
               <h1 className="is-size-3">Hey, Welcome Back! Sign in!</h1>
               <div className="icon-form">
                 <span className="icon is-large">
-                  <i class="fas fa-id-card fa-3x" />
+                  <i className="fas fa-id-card fa-3x" />
                 </span>
               </div>
               <Form onSubmit={this.handleSubmit} className="login-form">
@@ -174,6 +177,11 @@ class Login extends Component {
                   </div>
                 </Form.Item>
               </Form>
+              {this.state.errorLoginIn ? (
+                <div className="notification is-danger">
+                  Wrong username and password, pleas check them and try again!
+                </div>
+              ) : null}
             </div>
           </div>
         </div>
