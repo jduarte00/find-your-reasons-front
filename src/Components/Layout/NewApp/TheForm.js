@@ -9,7 +9,8 @@ let idDynamicForm = 0;
 
 class TheFormClass extends Component {
   state = {
-    confirmDirty: false
+    confirmDirty: false,
+    typeOfApp: null
   };
 
   handleSubmit = e => {
@@ -24,12 +25,12 @@ class TheFormClass extends Component {
             { withCredentials: true }
           )
           .then(response => {
-            console.log(response);
+            this.props.confirmation("good");
+            this.props.form.resetFields();
             return response;
           })
           .catch(err => {
-            //IMPROVEMENT: SHOW AN UI MESSAGE WHEN SOMETHING GOES WRONG!
-            console.log(err);
+            this.props.confirmation("bad");
           });
       }
     });
@@ -69,6 +70,10 @@ class TheFormClass extends Component {
 
   render() {
     const { getFieldDecorator, getFieldValue } = this.props.form;
+
+    const toggleAppGenerationType = this.props.form.getFieldValue(
+      "incomeGeneration"
+    );
 
     const formItemLayout = {
       labelCol: {
@@ -127,7 +132,7 @@ class TheFormClass extends Component {
             {
               required: true,
               whitespace: true,
-              message: "Please input passenger's name or delete this field."
+              message: "Please input user type or delete this field."
             }
           ]
         })(
@@ -239,13 +244,34 @@ class TheFormClass extends Component {
           )}
         </Form.Item>
 
-        {formItems}
+        {toggleAppGenerationType ? (
+          toggleAppGenerationType === "sell" ? (
+            <Form.Item label="Selling Price" hasFeedback>
+              {getFieldDecorator("sellingPrice", {
+                rules: [
+                  {
+                    required: true,
+                    message: "Please input the selling price of your App"
+                  }
+                ]
+              })(<Input />)}
+            </Form.Item>
+          ) : (
+            <>
+              {formItems}
 
-        <Form.Item {...formItemLayoutWithOutLabel}>
-          <Button type="dashed" onClick={this.add} style={{ width: "60%" }}>
-            <Icon type="plus" /> Add field
-          </Button>
-        </Form.Item>
+              <Form.Item {...formItemLayoutWithOutLabel}>
+                <Button
+                  type="dashed"
+                  onClick={this.add}
+                  style={{ width: "60%" }}
+                >
+                  <Icon type="plus" /> Add new user type
+                </Button>
+              </Form.Item>
+            </>
+          )
+        ) : null}
 
         <Form.Item {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit">

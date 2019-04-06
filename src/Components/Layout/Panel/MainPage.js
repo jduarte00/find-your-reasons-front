@@ -129,7 +129,6 @@ export default class MainPage extends Component {
   };
 
   deleteApp = appid => {
-    console.log(appid, "this is fckn appid");
     axios
       .delete(`http://localhost:3001/app/deleteapp/${appid}`, {
         withCredentials: true

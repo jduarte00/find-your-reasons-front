@@ -69,7 +69,10 @@ export default class MyLayout extends Component {
               />
             ) : null}
             {this.props.theContent === "newapp" ? (
-              <MainForm theUser={this.state.user} />
+              <MainForm
+                theUser={this.state.user}
+                changeRoute={this.props.changeRoute}
+              />
             ) : null}
             {this.props.theContent === "profile" ? (
               <UserProfile theUser={this.state.user} />
