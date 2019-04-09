@@ -179,7 +179,7 @@ class Login extends Component {
               </Form>
               {this.state.errorLoginIn ? (
                 <div className="notification is-danger">
-                  Wrong username and password, pleas check them and try again!
+                  Wrong username and password, please check them and try again!
                 </div>
               ) : null}
             </div>
