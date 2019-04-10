@@ -20,6 +20,7 @@ export default function Sidebar(props) {
           onClick={() => {
             props.changeRoute("home");
           }}
+          style={{ paddingLeft: "0" }}
         >
           <Icon type="home" />
           <span>Home</span>
@@ -33,6 +34,7 @@ export default function Sidebar(props) {
           <Icon type="code" />
           <span>New App</span>
         </Menu.Item>
+
         <Menu.Item
           key="10"
           onClick={() => {
@@ -42,6 +44,18 @@ export default function Sidebar(props) {
           <Icon type="user" />
           <span>Profile</span>
         </Menu.Item>
+
+        <Menu.Item
+          selected={true}
+          key="11"
+          onClick={() => {
+            props.changeRoute("newmonth");
+          }}
+        >
+          <Icon type="user" />
+          <span>New Month</span>
+        </Menu.Item>
+
         <Menu.Item disabled={true} key="2">
           <Icon type="desktop" />
           <span>Option 2</span>
