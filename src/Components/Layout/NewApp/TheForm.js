@@ -10,7 +10,8 @@ let idDynamicForm = 0;
 class TheFormClass extends Component {
   state = {
     confirmDirty: false,
-    typeOfApp: null
+    typeOfApp: null,
+    confirmation: null
   };
 
   handleSubmit = e => {
@@ -25,12 +26,12 @@ class TheFormClass extends Component {
             { withCredentials: true }
           )
           .then(response => {
-            this.props.confirmation("good");
+            this.props.statusNewApp("good");
             this.props.form.resetFields();
             return response;
           })
           .catch(err => {
-            this.props.confirmation("bad");
+            this.props.statusNewApp("bad");
           });
       }
     });
