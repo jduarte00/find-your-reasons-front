@@ -10,6 +10,7 @@ import UserProfile from "./Profile/UserProfile";
 import ViewApp from "./ViewApp/ViewApp";
 import Topbar from "./Topbar";
 import Sidebar from "./Sidebar";
+import NewMonth from "./NewMonth/NewMonth";
 
 const { Content, Footer } = Layout;
 
@@ -68,12 +69,21 @@ export default class MyLayout extends Component {
                 changeRoute={this.props.changeRoute}
               />
             ) : null}
+
             {this.props.theContent === "newapp" ? (
               <MainForm
                 theUser={this.state.user}
                 changeRoute={this.props.changeRoute}
               />
             ) : null}
+
+            {this.props.theContent === "newmonth" ? (
+              <NewMonth
+                theUser={this.state.user}
+                changeRoute={this.props.changeRoute}
+              />
+            ) : null}
+
             {this.props.theContent === "profile" ? (
               <UserProfile theUser={this.state.user} />
             ) : null}
