@@ -11,7 +11,26 @@ export default class Topbar extends Component {
     this.userMenu = (
       <Menu>
         <Menu.Item>
-          <a onClick={this.logoutUser} rel="noopener noreferrer" href="/">
+          <a
+            onClick={() => {
+              this.service
+                .logout()
+                .then(() => {
+                  alert("corrirrrrr");
+                  this.props.getTheUser(null);
+                  this.setState({ loggedInUser: null });
+                })
+                .catch(err => {
+                  alert("no corri");
+                  this.props.getTheUser(null);
+                  this.setState({ loggedInUser: null });
+                });
+
+              alert("corrido");
+            }}
+            rel="noopener noreferrer"
+            href="/"
+          >
             Logout
           </a>
         </Menu.Item>
@@ -24,6 +43,7 @@ export default class Topbar extends Component {
       .logout()
       .then(() => {
         this.props.getTheUser(null);
+        this.props.changeRoute("/");
         this.setState({ loggedInUser: null });
       })
       .catch(err => {
@@ -48,7 +68,22 @@ export default class Topbar extends Component {
             <i className="fas fa-chart-line " />
           </span>
         </span>
-        <Dropdown overlay={this.userMenu}>
+        <Dropdown
+          overlay={
+            <Menu>
+              <Menu.Item>
+                <a
+                  onClick={() => {
+                    this.logoutUser();
+                  }}
+                  rel="noopener noreferrer"
+                >
+                  Logout
+                </a>
+              </Menu.Item>
+            </Menu>
+          }
+        >
           <button className="ant-dropdown-link button is-danger is-small">
             {/* <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
             {console.log(this.state.user.username */}

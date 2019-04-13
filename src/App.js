@@ -24,8 +24,6 @@ class App extends Component {
       this.service
         .loggedin()
         .then(response => {
-          console.log("fetch user" + response);
-          console.log(response);
           this.setState({
             loggedInUser: response
           });
