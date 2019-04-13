@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import { Layout } from "antd";
-
+import axios from "axios";
 import "./../../App.css";
 
 import MainPage from "./Panel/MainPage";
@@ -21,9 +21,24 @@ export default class MyLayout extends Component {
       collapsed: true,
       user: props.theUser,
       isSmall: false,
-      currentRoute: "home"
+      currentRoute: props.theContent.currentPath,
+      nameOfApps: [],
+      appID: props.theContent
     };
   }
+
+  getNamesOfApps = () => {
+    axios
+      .get(
+        "https://find-your-reasons-back.herokuapp.com/user/get-income-type",
+        {
+          withCredentials: true
+        }
+      )
+      .then(theData => {
+        this.setState({ nameOfApps: theData.data });
+      });
+  };
 
   updatePredicate = () => {
     this.setState({ isSmall: window.innerWidth < 640 });
@@ -42,16 +57,21 @@ export default class MyLayout extends Component {
     this.setState({ ...this.state, user: nextProps["theUser"] });
   };
 
+  componentWillMount = () => {
+    this.getNamesOfApps();
+  };
+
   onCollapse = collapsed => {
-    console.log(collapsed);
     this.setState({ collapsed });
   };
 
   render() {
+    console.log(this.state.currentRoute, "current route");
     return (
       <Layout style={{ minHeight: "100vh" }}>
         {this.state.isSmall ? null : (
           <Sidebar
+            nameOfApps={this.state.nameOfApps}
             breakpoint="lg"
             collapsedWidth="0"
             handleOnCollapse={this.onCollapse}

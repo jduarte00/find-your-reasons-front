@@ -145,7 +145,9 @@ export default class MainPage extends Component {
 
   getRegisteredCompanies = () => {
     axios
-      .get("http://localhost:3001/user/panel", { withCredentials: true })
+      .get("https://find-your-reasons-back.herokuapp.com/user/panel", {
+        withCredentials: true
+      })
       .then(theData => {
         if (!(theData.data.noData || theData.data.noMonths)) {
           this.makeKpiInfo(theData);
@@ -167,9 +169,12 @@ export default class MainPage extends Component {
 
   deleteApp = appid => {
     axios
-      .delete(`http://localhost:3001/app/deleteapp/${appid}`, {
-        withCredentials: true
-      })
+      .delete(
+        `https://find-your-reasons-back.herokuapp.com/app/deleteapp/${appid}`,
+        {
+          withCredentials: true
+        }
+      )
       .then(theIndex => {
         this.getRegisteredCompanies();
       });

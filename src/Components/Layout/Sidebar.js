@@ -26,17 +26,28 @@ export default function Sidebar(props) {
           <span>Home</span>
         </Menu.Item>
         <Menu.Item
-          key="9"
+          key="2"
           onClick={() => {
             props.changeRoute("newapp");
           }}
         >
-          <Icon type="code" />
+          <Icon type="plus" />
           <span>New App</span>
         </Menu.Item>
 
         <Menu.Item
-          key="10"
+          selected={true}
+          key="4"
+          onClick={() => {
+            props.changeRoute("newmonth");
+          }}
+        >
+          <Icon type="calendar" />
+          <span>New Month</span>
+        </Menu.Item>
+
+        <Menu.Item
+          key="3"
           onClick={() => {
             props.changeRoute("profile");
           }}
@@ -45,22 +56,7 @@ export default function Sidebar(props) {
           <span>Profile</span>
         </Menu.Item>
 
-        <Menu.Item
-          selected={true}
-          key="11"
-          onClick={() => {
-            props.changeRoute("newmonth");
-          }}
-        >
-          <Icon type="user" />
-          <span>New Month</span>
-        </Menu.Item>
-
-        <Menu.Item disabled={true} key="2">
-          <Icon type="desktop" />
-          <span>Option 2</span>
-        </Menu.Item>
-        <SubMenu
+        {/* <SubMenu
           key="sub1"
           title={
             <span>
@@ -69,22 +65,20 @@ export default function Sidebar(props) {
             </span>
           }
         >
-          <Menu.Item key="3">Tom</Menu.Item>
-          <Menu.Item key="4">Bill</Menu.Item>
-          <Menu.Item key="5">Alex</Menu.Item>
-        </SubMenu>
-        <SubMenu
-          key="sub2"
-          title={
-            <span>
-              <Icon type="team" />
-              <span>Team</span>
-            </span>
-          }
-        >
-          <Menu.Item key="6">Team 1</Menu.Item>
-          <Menu.Item key="8">Team 2</Menu.Item>
-        </SubMenu>
+          
+          {props.nameOfApps.map((objectWithName, index) => {
+            return (
+              <Menu.Item
+                key={index + 5}
+                onClick={() => {
+                  props.changeRoute("viewapp", objectWithName.appID);
+                }}
+              >
+                {objectWithName.name}
+              </Menu.Item>
+            );
+          })}
+        </SubMenu> */}
       </Menu>
     </Sider>
   );

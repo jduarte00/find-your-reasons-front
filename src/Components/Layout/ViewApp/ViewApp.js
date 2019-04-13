@@ -164,9 +164,12 @@ export default class ViewApp extends Component {
 
   getTheAppData = appID => {
     axios
-      .get(`http://localhost:3001/app/viewapp/${appID}`, {
-        withCredentials: true
-      })
+      .get(
+        `https://find-your-reasons-back.herokuapp.com/app/viewapp/${appID}`,
+        {
+          withCredentials: true
+        }
+      )
       .then(appData => {
         console.log(appData, "the app data");
         this.createGraphsArrays(appData);
@@ -175,6 +178,9 @@ export default class ViewApp extends Component {
           appData: appData.data,
           appName: appData.data.theApp.name
         });
+      })
+      .catch(err => {
+        console.log(err);
       });
   };
 

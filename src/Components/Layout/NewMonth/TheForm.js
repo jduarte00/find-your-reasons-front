@@ -39,7 +39,8 @@ class TheFormClass extends Component {
 
         axios
           .post(
-            "http://localhost:3001/app/newmonth/" + this.state.appID,
+            "https://find-your-reasons-back.herokuapp.com/app/newmonth/" +
+              this.state.appID,
             { infoToSend },
             { withCredentials: true }
           )
@@ -56,9 +57,12 @@ class TheFormClass extends Component {
 
   getAppNamesTypeAndUsers = () => {
     axios
-      .get("http://localhost:3001/user/get-income-type", {
-        withCredentials: true
-      })
+      .get(
+        "https://find-your-reasons-back.herokuapp.com/user/get-income-type",
+        {
+          withCredentials: true
+        }
+      )
       .then(response => {
         this.setState({ nameOfAppsArray: response.data });
       });
