@@ -122,7 +122,7 @@ export default class ViewApp extends Component {
         labels: appData.data.forecast.labels,
         datasets: [
           {
-            label: "Average Users per Month",
+            label: "Your forecasted sales",
             fill: true,
             lineTension: 0.1,
             backgroundColor: "rgba(75,192,192,0.4)",
