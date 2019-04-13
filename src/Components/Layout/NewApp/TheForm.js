@@ -1,7 +1,16 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import { Form, Input, Tooltip, Icon, Select, Button, Radio } from "antd";
+import {
+  Form,
+  Input,
+  Tooltip,
+  Icon,
+  Select,
+  Button,
+  Radio,
+  InputNumber
+} from "antd";
 
 const { Option } = Select;
 
@@ -247,16 +256,29 @@ class TheFormClass extends Component {
 
         {toggleAppGenerationType ? (
           toggleAppGenerationType === "sell" ? (
-            <Form.Item label="Selling Price" hasFeedback>
-              {getFieldDecorator("sellingPrice", {
-                rules: [
-                  {
-                    required: true,
-                    message: "Please input the selling price of your App"
-                  }
-                ]
-              })(<Input />)}
-            </Form.Item>
+            <>
+              <Form.Item label="Selling Price" hasFeedback>
+                {getFieldDecorator("sellingPrice", {
+                  rules: [
+                    {
+                      required: true,
+                      message: "Please input the selling price of your App"
+                    }
+                  ]
+                })(<InputNumber min={0} placeholder="0" />)}
+              </Form.Item>
+
+              <Form.Item label="Cost of Development" hasFeedback>
+                {getFieldDecorator("totalCostOfDevelopment", {
+                  rules: [
+                    {
+                      required: true,
+                      message: "Please input the total cost of development"
+                    }
+                  ]
+                })(<InputNumber min={0} placeholder="0" />)}
+              </Form.Item>
+            </>
           ) : (
             <>
               {formItems}
