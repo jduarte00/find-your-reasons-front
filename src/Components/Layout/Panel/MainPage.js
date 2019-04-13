@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import MyBreadcrumb from "../Breadcrumb";
-import { Table, Card } from "antd";
+import { Table, Card, Icon, Divider, Typography } from "antd";
+
 import { Bar, Pie } from "react-chartjs-2";
 import axios from "axios";
 
+const { Title, Paragraph, Text } = Typography;
 export default class MainPage extends Component {
   constructor(props) {
     super(props);
@@ -181,7 +183,6 @@ export default class MainPage extends Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <div>
         <div className="container responsive-padding-sides">
@@ -190,26 +191,62 @@ export default class MainPage extends Component {
               <MyBreadcrumb routes={[this.state.user.username, "home"]} />
 
               {this.state.userApps.noData ? (
-                <div>
-                  <h1>NO HAY DATA</h1>
+                <div style={{ marginTop: "150px" }}>
+                  <Title level={3}>
+                    {" "}
+                    You have not registered any app yet, please do so!
+                  </Title>
+                  <Icon
+                    type="eye-invisible"
+                    style={{ fontSize: "100px", marginTop: "50px" }}
+                  />
                 </div>
               ) : (
                 <>
+                  <Divider>Welcome Back</Divider>
+                  <div
+                    className="columns is-centered"
+                    style={{ marginTop: "50px" }}
+                  >
+                    <div className="column is-half">
+                      <Title level={2}>
+                        {" "}
+                        This are your monthly kpi's and numbers
+                      </Title>
+                      <Icon
+                        type="arrow-down"
+                        style={{ fontSize: "50px", marginTop: "15px" }}
+                      />
+                    </div>
+                  </div>
+                  <Divider orientation="left" style={{ marginTop: "100px" }}>
+                    Your registered apps
+                  </Divider>
                   <div className="columns margin-top">
                     <div className="column">
                       <Table
                         columns={this.columns}
                         dataSource={this.state.userApps.tableData}
                         size="middle"
+                        style={{ marginTop: "20px" }}
                       />
                     </div>
                   </div>
                   {this.state.userApps.noMonths ? (
                     <div>
-                      <h1>NO HAY MESES</h1>
+                      <h1 style={{ marginTop: "200px" }}>
+                        Add apps with months (SasS income generation type) and
+                        add months to be able to see this information!
+                      </h1>
                     </div>
                   ) : (
                     <>
+                      <Divider
+                        orientation="left"
+                        style={{ marginTop: "150px" }}
+                      >
+                        Your monthly numbers
+                      </Divider>
                       <div className="columns margin-top">
                         <div className="column">
                           <p className="heading">Total Income</p>
@@ -230,6 +267,9 @@ export default class MainPage extends Component {
                           </p>
                         </div>
                       </div>
+                      <Divider style={{ marginTop: "150px" }}>
+                        Your apps performance
+                      </Divider>
                       <div className="columns margin-top">
                         <div className="column">
                           <Bar
@@ -264,6 +304,13 @@ export default class MainPage extends Component {
                           />
                         </div>
                       </div>
+                      <Divider
+                        orientation="left"
+                        style={{ marginTop: "150px" }}
+                      >
+                        {" "}
+                        KPI's and Expenses of the Month
+                      </Divider>
                       <div className="columns margin-top">
                         <div className="column is-half">
                           {this.state.userApps.incomeDifference ? (
@@ -326,7 +373,8 @@ export default class MainPage extends Component {
             </>
           ) : (
             <div>
-              <h1>LOADING...</h1>
+              <Icon type="loading" style={{ marginTop: "300px" }} />
+              <h1>Loading...</h1>
             </div>
           )}
         </div>

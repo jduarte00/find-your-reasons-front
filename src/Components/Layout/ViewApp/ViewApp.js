@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import MyBreadcrumb from "../Breadcrumb";
 import { Line, Bar } from "react-chartjs-2";
-import { Typography, Table, Divider, Card } from "antd";
+import { Typography, Table, Divider, Card, Icon, Button } from "antd";
 const { Title, Text } = Typography;
 
 export default class ViewApp extends Component {
@@ -144,7 +144,6 @@ export default class ViewApp extends Component {
           }
         ]
       };
-      console.log(forecastData, "forecast");
     }
 
     this.userGraphData = userGraphData;
@@ -171,7 +170,6 @@ export default class ViewApp extends Component {
         }
       )
       .then(appData => {
-        console.log(appData, "the app data");
         this.createGraphsArrays(appData);
         this.createKpiCard(appData);
         this.setState({
@@ -189,7 +187,6 @@ export default class ViewApp extends Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <div>
         <div className="container responsive-padding-sides">
@@ -401,6 +398,20 @@ export default class ViewApp extends Component {
                       </div>
                     </div>
                   )}
+
+                  <div className="columns is-centered">
+                    <div className="column is-half">
+                      <Button
+                        type="primary"
+                        icon="home"
+                        onClick={() => {
+                          this.props.changeRoute("home");
+                        }}
+                      >
+                        Go Home!
+                      </Button>
+                    </div>
+                  </div>
                 </>
               ) : this.state.appData.theApp.incomeGeneration !== "saas" ? (
                 <>
@@ -450,6 +461,20 @@ export default class ViewApp extends Component {
                       </div>
                     </div>
                   </div>
+
+                  <div className="columns is-centered">
+                    <div className="column is-half">
+                      <Button
+                        type="primary"
+                        icon="home"
+                        onClick={() => {
+                          this.props.changeRoute("home");
+                        }}
+                      >
+                        Go Home!
+                      </Button>
+                    </div>
+                  </div>
                 </>
               ) : (
                 <div>
@@ -458,11 +483,28 @@ export default class ViewApp extends Component {
                     You need to provide a month to be able to visualize more
                     info!
                   </h1>
+                  <Button
+                    type="primary"
+                    icon="home"
+                    onClick={() => {
+                      this.props.changeRoute("home");
+                    }}
+                  >
+                    Go Home!
+                  </Button>
                 </div>
               )}
             </>
           ) : (
-            <span> Loading ...</span>
+            <div>
+              <Icon
+                type="loading"
+                style={{ marginTop: "300px" }}
+                theme="twoTone"
+                twoToneColor="#52c41a"
+              />
+              <h1>Loading...</h1>
+            </div>
           )}
         </div>
       </div>

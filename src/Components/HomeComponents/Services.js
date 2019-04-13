@@ -15,69 +15,33 @@ export default function Services() {
         <div className="column">
           <i className="fas fa-sort-numeric-down fa-4x" />
           <hr />
-          <h3>Acid Reasons</h3>
+          <h3>Total Income</h3>
           <hr />
           <p className="is-family-monospace">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus
-            nihil accusantium exercitationem ea cupiditate? Odio eius veritatis
-            libero nisi vero.
+            It doesn't matter how many apps you have, we help you keep track of
+            you total income regardless of the number of users or the way you
+            generate income.
           </p>
         </div>
         <div className="column">
-          <i className="fas fa-sort-numeric-down fa-4x" />
+          <i className="fas fa-chart-pie fa-4x" />
           <hr />
-          <h3>Acid Reasons</h3>
+          <h3>Total Expenses</h3>
           <hr />
           <p className="is-family-monospace">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus
-            nihil accusantium exercitationem ea cupiditate? Odio eius veritatis
-            libero nisi vero.
+            Controlling your expenses is an important part of your career, we
+            help you know how much you spent on each category.
           </p>
         </div>
         <div className="column">
-          <i className="fas fa-sort-numeric-down fa-4x" />
+          <i className="fas fa-piggy-bank fa-4x" />
           <hr />
-          <h3>Acid Reasons</h3>
-          <hr />
-          <p className="is-family-monospace">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus
-            nihil accusantium exercitationem ea cupiditate? Odio eius veritatis
-            libero nisi vero.
-          </p>
-        </div>
-      </div>
-      <div className="columns">
-        <div className="column">
-          <i className="fas fa-sort-numeric-down fa-4x" />
-          <hr />
-          <h3>Acid Reasons</h3>
+          <h3>Total Users</h3>
           <hr />
           <p className="is-family-monospace">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus
-            nihil accusantium exercitationem ea cupiditate? Odio eius veritatis
-            libero nisi vero.
-          </p>
-        </div>
-        <div className="column">
-          <i className="fas fa-sort-numeric-down fa-4x" />
-          <hr />
-          <h3>Acid Reasons</h3>
-          <hr />
-          <p className="is-family-monospace">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus
-            nihil accusantium exercitationem ea cupiditate? Odio eius veritatis
-            libero nisi vero.
-          </p>
-        </div>
-        <div className="column">
-          <i className="fas fa-sort-numeric-down fa-4x" />
-          <hr />
-          <h3>Acid Reasons</h3>
-          <hr />
-          <p className="is-family-monospace">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus
-            nihil accusantium exercitationem ea cupiditate? Odio eius veritatis
-            libero nisi vero.
+            Look at trends and be able to know if your database of users is
+            growing or not, so you can implement the right measures at the right
+            time
           </p>
         </div>
       </div>

@@ -24,6 +24,8 @@ class App extends Component {
       this.service
         .loggedin()
         .then(response => {
+          console.log("fetch user" + response);
+          console.log(response);
           this.setState({
             loggedInUser: response
           });
@@ -60,9 +62,34 @@ class App extends Component {
                   theContent={this.state.currentPath}
                   changeRoute={this.changeCurrentRoute}
                   appID={this.state.idApp}
+                  logoutUserTwo={this.logoutUserTwo}
                 />
               )}
             />
+            {/*  <Route
+              exact
+              path="/signup"
+              render={() => (
+                <MyLayout
+                  theUser={this.state.loggedInUser}
+                  theContent={this.state.currentPath}
+                  changeRoute={this.changeCurrentRoute}
+                  appID={this.state.idApp}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/signin"
+              render={() => (
+                <MyLayout
+                  theUser={this.state.loggedInUser}
+                  theContent={this.state.currentPath}
+                  changeRoute={this.changeCurrentRoute}
+                  appID={this.state.idApp}
+                />
+              )}
+            /> */}
             )} />
           </Switch>
           {/* <Route path="/" render={() => <WrongRoute />} /> */}

@@ -21,24 +21,9 @@ export default class MyLayout extends Component {
       collapsed: true,
       user: props.theUser,
       isSmall: false,
-      currentRoute: props.theContent.currentPath,
-      nameOfApps: [],
-      appID: props.theContent
+      currentRoute: "home"
     };
   }
-
-  getNamesOfApps = () => {
-    axios
-      .get(
-        "https://find-your-reasons-back.herokuapp.com/user/get-income-type",
-        {
-          withCredentials: true
-        }
-      )
-      .then(theData => {
-        this.setState({ nameOfApps: theData.data });
-      });
-  };
 
   updatePredicate = () => {
     this.setState({ isSmall: window.innerWidth < 640 });
@@ -57,16 +42,11 @@ export default class MyLayout extends Component {
     this.setState({ ...this.state, user: nextProps["theUser"] });
   };
 
-  componentWillMount = () => {
-    this.getNamesOfApps();
-  };
-
   onCollapse = collapsed => {
     this.setState({ collapsed });
   };
 
   render() {
-    console.log(this.state.currentRoute, "current route");
     return (
       <Layout style={{ minHeight: "100vh" }}>
         {this.state.isSmall ? null : (
@@ -79,8 +59,13 @@ export default class MyLayout extends Component {
             changeRoute={this.props.changeRoute}
           />
         )}
-        <Layout>
-          <Topbar getUser={this.props.getUser} theUser={this.state.user} />
+        <Layout style={{ backgroundColor: "white" }}>
+          <Topbar
+            getUser={this.props.getUser}
+            theUser={this.state.user}
+            changeRoute={this.props.changeRoute}
+            logoutUserTwo={this.props.logoutUserTwo}
+          />
 
           <Content>
             {this.props.theContent === "home" ? (
@@ -108,7 +93,11 @@ export default class MyLayout extends Component {
               <UserProfile theUser={this.state.user} />
             ) : null}
             {this.props.theContent === "viewapp" ? (
-              <ViewApp theUser={this.state.user} appID={this.props.appID} />
+              <ViewApp
+                theUser={this.state.user}
+                appID={this.props.appID}
+                changeRoute={this.props.changeRoute}
+              />
             ) : null}
           </Content>
           <Footer

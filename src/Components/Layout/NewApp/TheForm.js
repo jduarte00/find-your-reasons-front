@@ -20,7 +20,8 @@ class TheFormClass extends Component {
   state = {
     confirmDirty: false,
     typeOfApp: null,
-    confirmation: null
+    confirmation: null,
+    idDynamic: 0
   };
 
   handleSubmit = e => {
@@ -37,6 +38,8 @@ class TheFormClass extends Component {
           .then(response => {
             this.props.statusNewApp("good");
             this.props.form.resetFields();
+            this.setState({ idDynamic: 0 });
+
             return response;
           })
           .catch(err => {
@@ -70,7 +73,7 @@ class TheFormClass extends Component {
     const { form } = this.props;
     // can use data-binding to get
     const keys = form.getFieldValue("keys");
-    const nextKeys = keys.concat(idDynamicForm++);
+    const nextKeys = keys.concat(this.state.idDynamic++);
     // can use data-binding to set
     // important! notify form to detect changes
     form.setFieldsValue({
@@ -79,6 +82,10 @@ class TheFormClass extends Component {
   };
 
   render() {
+    let idDynamicForm = 0;
+
+    let id = 0;
+
     const { getFieldDecorator, getFieldValue } = this.props.form;
 
     const toggleAppGenerationType = this.props.form.getFieldValue(
@@ -161,6 +168,8 @@ class TheFormClass extends Component {
         ) : null}
       </Form.Item>
     ));
+
+    console.log(getFieldValue("keys"));
 
     return (
       <Form {...formItemLayout} onSubmit={this.handleSubmit}>

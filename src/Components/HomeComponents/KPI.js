@@ -24,7 +24,7 @@ export default function KPI() {
       <div className="columns is-centered">
         <div className="column is-half">
           <div style={{ background: "#ECECEC", padding: "30px" }}>
-            <p>your company VS the rest of the sector</p>
+            <p>You vs Yourself</p>
             <Row gutter={16}>
               <Col span={12}>
                 <Card>

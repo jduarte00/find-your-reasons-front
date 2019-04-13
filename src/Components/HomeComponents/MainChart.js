@@ -2,20 +2,20 @@ import React from "react";
 import { Bar } from "react-chartjs-2";
 
 const data = {
-  labels: ["Acid Reason", "ROI", "Sales vs Expenses", "Total Revenue"],
+  labels: ["Income", "Expenses", "Users", "Total Revenue"],
   datasets: [
     {
-      label: "2017",
+      label: "My App 1",
       data: [617594, 181045, 153060, 106519],
       backgroundColor: "rgba(255, 99, 132, 0.6)"
     },
     {
-      label: "2018",
+      label: "My App 2",
       data: [417594, 281045, 753060, 306519],
       backgroundColor: "rgba(0, 99, 132, 0.6)"
     },
     {
-      label: "2019",
+      label: "My App 3",
       data: [217594, 681045, 353060, 906519],
       backgroundColor: "rgba(100, 99, 132, 0.6)"
     }

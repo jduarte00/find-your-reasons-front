@@ -11,24 +11,6 @@ export default class Topbar extends Component {
     this.userMenu = (
       <Menu>
         <Menu.Item>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="http://www.alipay.com/"
-          >
-            Go to Profile
-          </a>
-        </Menu.Item>
-        <Menu.Item>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="http://www.taobao.com/"
-          >
-            Go to Stats
-          </a>
-        </Menu.Item>
-        <Menu.Item>
           <a onClick={this.logoutUser} rel="noopener noreferrer" href="/">
             Logout
           </a>
@@ -38,10 +20,15 @@ export default class Topbar extends Component {
   }
 
   logoutUser = () => {
-    this.service.logout().then(() => {
-      this.setState({ loggedInUser: null });
-      this.props.getUser(null);
-    });
+    this.service
+      .logout()
+      .then(() => {
+        this.props.getTheUser(null);
+        this.setState({ loggedInUser: null });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   render() {
